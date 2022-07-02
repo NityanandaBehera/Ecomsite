@@ -8,6 +8,7 @@ from django.conf import settings
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib import auth
+from django.core.mail import send_mail
 
 
 def send_otp(mobile, otp):  # for otp i have used MSG91 api documents
@@ -24,6 +25,14 @@ def send_otp(mobile, otp):  # for otp i have used MSG91 api documents
 
 
 def home(request):
+    send_mail(
+        'Testing mail',
+        'welcome to us',
+        'nityanandab306@gmail.com',
+        ['nityanandabehera85132@gmail.com'],
+        fail_silently=False,
+
+    )
     return render(request, 'home.html')
 
 
